@@ -1,0 +1,30 @@
+[user]
+    name = Olaf Gladis
+    email = olaf@pokermania.de
+[color]
+    ui = true
+[core]
+    editor = vim
+    excludesfile = /home/olaf/.gitignore_global
+[merge]
+    tool = kdiff3
+    summary = true
+[rerere]
+    enabled = 1
+[alias]
+    st = status -s -b --ignore-submodules=dirty
+    ci = commit -v
+    co = checkout
+    br = branch
+    pr = pull --rebase
+    ms = merge --squash
+    l = log --graph --pretty=hannes
+    ls = log --graph --pretty=hannes --stat
+    lp = log --graph --pretty=hannes --patch
+    d = diff
+    ds = diff --stat
+    a = add -p
+[pretty]
+    hannes = %C(yellow)commit %h%C(magenta)%d%n%C(magenta)Author: %C(green)%an%Creset%C(magenta) <%ae>, %cr%n%B
+[push]
+	default = current

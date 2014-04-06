@@ -1,0 +1,80 @@
+#! /usr/bin/env python
+#encoding: utf-8
+import re
+import sys
+import os
+import subprocess as sub
+import shlex
+
+RED="\033[0;31m"
+PINK="\033[1;31m"
+YELLOW="\033[1;33m"
+GREEN="\033[0;32m"
+LT_GREEN="\033[1;32m"
+BLUE="\033[0;34m"
+WHITE="\033[1;37m"
+PURPLE="\033[1;35m"
+CYAN="\033[1;36m"
+BROWN="\033[0;33m"
+COLOR_NONE="\033[0m"
+
+branch_pattern = re.compile(r"On branch ([^ \n]*)")
+detached_pattern = re.compile(r"HEAD detached at")
+remote_compare = [
+    ( re.compile(r"Your branch (.*) can be fast-forwarded.", re.MULTILINE), "%s»" % WHITE ),
+    ( re.compile(r"Your branch is ahead of", re.MULTILINE), "%s↑" % YELLOW ),
+    ( re.compile(r"Your branch is behind", re.MULTILINE), "%s↓" % YELLOW ),
+    ( re.compile(r"Your branch and (.*) have diverged", re.MULTILINE), "%s↕" % YELLOW ),
+]
+
+dirty_checks = [
+    ( re.compile(r"\s+modified:", re.MULTILINE), "%s⚡" % RED ),
+    ( re.compile(r"Changes to be committed:", re.MULTILINE), "%s¦" % YELLOW ),
+    ( re.compile(r"\s+new file:", re.MULTILINE), "%s+" % LT_GREEN ),
+    ( re.compile(r"\s+deleted:", re.MULTILINE), "%s-" % RED ),
+    ( re.compile(r"\s+renamed:", re.MULTILINE), "%s→" % YELLOW ),
+    ( re.compile(r"Untracked files:", re.MULTILINE), "%s¤" % YELLOW ),
+
+]
+
+def get_stdout(cmd):
+    p = sub.Popen(cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+    output, error = p.communicate()
+    if error.startswith(b"fatal: Not a git repository"):
+        sys.exit(0)
+    try:
+        _ = unicode()  # Just test if we are in python2
+        return output
+    except NameError:
+        return str(output, encoding="utf-8")
+
+git_status = get_stdout('git status')
+
+branch_match = branch_pattern.search(git_status)
+if not branch_match:
+    # are we rebasing?
+    toplevel = get_stdout("git rev-parse --show-toplevel")
+    if not toplevel:
+        sys.exit(0)
+    if (os.path.exists("%s/.git/rebase-merge" % toplevel) or 
+            os.path.exists("%s/.git/rebase-apply" % toplevel)):
+        sha = get_stdout("cat %s/.git/rebase-merge/stopped-sha" % toplevel)
+        print("%s\(rebase in progress)%s %s" % (PINK, COLOR_NONE, sha))
+    else:
+        print(RED + "<detached head>" + COLOR_NONE)
+    sys.exit()
+else:
+    branch = branch_match.groups()[0]
+
+git_prompt = [GREEN, branch, COLOR_NONE, " "]
+for regex, symbol in remote_compare:
+    if regex.search(git_status):
+        git_prompt.append(symbol)
+        break
+
+if not "working directory clean" in git_status:
+    for regex, symbol in dirty_checks:
+        if regex.search(git_status):
+            git_prompt.append(symbol)
+
+print("".join(git_prompt))
