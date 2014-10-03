@@ -1,0 +1,16 @@
+#!/bin/bash
+
+pushd .
+while :
+do
+	if [ -f ./env/bin/activate ]
+	then
+		. ./env/bin/activate
+		break
+	else
+		cd ..
+	fi
+done
+# cd /home/olaf/workspace/kochbuch
+# . ./env/bin/activate
+popd
