@@ -1,6 +1,4 @@
 #!/bin/bash
 
-xrandr --output HDMI3 --off
-xrandr --output LVDS1 --auto
-xrandr --output VGA1 --off
+xrandr --output HDMI3 --off --output LVDS1 --auto --output VGA1 --off
 
