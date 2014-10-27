@@ -167,4 +167,7 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+export HISTTIMEFORMAT="%d/%m/%y %T "
+export HISTFILESIZE=10000
+
 source ~/.local_bashrc
