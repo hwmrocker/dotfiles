@@ -144,7 +144,13 @@ unset _prompt_hostname _prompt_username
 if [ -f ~/.pokermania ]; then
     source ~/.pokermania
 fi
-source  /usr/share/autojump/autojump.sh
+
+for file in /etc/profile.d/autojump.sh /usr/share/autojump/autojump.sh; do
+    if [ -f "$file" ]; then
+       source "$file"
+	break
+    fi
+done
 
 if [ -f ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
