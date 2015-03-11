@@ -185,3 +185,5 @@ fi
 
 
 source ~/.local_bashrc
+PATH=$PATH:/home/olaf/.linjark/bin
+export PATH
