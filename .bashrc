@@ -174,5 +174,14 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+keychain --dir ~/.ssh/.keychain ~/.ssh/id_rsa ~/.ssh/id_ed25519
+if [ -f "~/.ssh/.keychain/$HOST-sh" ]; then
+    source ~/.ssh/.keychain/$HOST-sh
+fi
+if [ -f "~/.ssh/.keychain/$HOST-sh-gpg" ]; then
+    source ~/.ssh/.keychain/$HOST-sh-gpg
+fi
+
+
 
 source ~/.local_bashrc
