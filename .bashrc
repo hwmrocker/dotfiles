@@ -175,11 +175,11 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 keychain --dir ~/.ssh/.keychain ~/.ssh/id_rsa ~/.ssh/id_ed25519
-if [ -f "~/.ssh/.keychain/$HOST-sh" ]; then
-    source ~/.ssh/.keychain/$HOST-sh
+if [ -f ~/.ssh/.keychain/"$HOSTNAME-sh" ]; then
+    source ~/.ssh/.keychain/"$HOSTNAME-sh"
 fi
-if [ -f "~/.ssh/.keychain/$HOST-sh-gpg" ]; then
-    source ~/.ssh/.keychain/$HOST-sh-gpg
+if [ -f ~/.ssh/.keychain/"$HOSTNAME-sh-gpg" ]; then
+    source ~/.ssh/.keychain/"$HOSTNAME-sh-gpg"
 fi
 
 
