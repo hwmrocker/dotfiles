@@ -31,7 +31,6 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # lock screen Ctrl + Alt + l
 bindsym Control+Mod1+l exec i3lock -p win -c 000000 -u
-bindsym Control+Shift+l exec i3lock -p win -c 000000 -u
 
 # kill focused window
 bindsym $mod+Shift+q kill
