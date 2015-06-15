@@ -153,7 +153,7 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-keychain --quiet --agents "ssh,gpg" --nogui --dir ~/.ssh/.keychain ~/.ssh/id_rsa ~/.ssh/id_ed25519 65178870
+keychain --quiet --agents "ssh,gpg" --nogui --dir ~/.ssh/.keychain ~/.ssh/id_rsa ~/.ssh/id_ed25519
 if [ -f ~/.ssh/.keychain/"$HOSTNAME-sh" ]; then
     source ~/.ssh/.keychain/"$HOSTNAME-sh"
 fi
