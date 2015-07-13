@@ -1,16 +1,23 @@
 {
+	"auto_complete_cycle": true,
+	"ensure_newline_at_eof_on_save": true,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"env"
+	],
 	"font_size": 9,
 	"ignored_packages":
 	[
-		"PHP",
-		"PHPTools",
+		"PHP Companion",
 		"Python Flake8 Lint",
-		"PHP Companion"
+		"PHP",
+		"PHPTools"
 	],
 	"shift_tab_unindent": true,
 	"tab_size": 4,
-	"translate_tabs_to_spaces": true,
-  "ensure_newline_at_eof_on_save": true,
-	"auto_complete_cycle": true,
-    "folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", "env"],
+	"translate_tabs_to_spaces": true
 }
