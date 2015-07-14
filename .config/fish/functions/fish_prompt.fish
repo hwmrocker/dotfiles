@@ -56,8 +56,8 @@ function fish_prompt --description 'Write out the prompt'
         end
         set suffix '#'
     case '*'
-        set color_cwd $fish_color_cwd
-        set suffix '>'
+        set color_cwd blue
+        set suffix '$'
     end
 
     set -l prompt_status
@@ -87,10 +87,16 @@ function fish_prompt --description 'Write out the prompt'
         )
     end
 
-    printf '[%s] ' (date "+%H:%M:%S")
-    echo -n -s  (set_color $fish_color_user) "$USER" $normal @ (set_color $fish_color_host) "$__fish_prompt_hostname" $normal
+    printf '%s[%s]%s ' (set_color -o 444) (date "+%H:%M:%S") $normal
+    if test "$VIRTUAL_ENV"
+    	printf "%s[%s]%s " (set_color -b blue white) (basename (dirname "$VIRTUAL_ENV")) $normal
+    end
+    echo -n -s  (set_color $fish_color_user) "$USER" $normal
+    if test ! "$DISPLAY"
+    	echo -n -s @ (set_color $fish_color_host) "$__fish_prompt_hostname" $normal
+    end
     printf ' [%s%s] ' (parse_git_branch) $normal
-    echo -n -s $normal ' ' (set_color $color_cwd) (prompt_pwd) $normal "$mode_str"
+    echo -n -s $normal ' ' (set_color -o $color_cwd) (prompt_pwd) $normal "$mode_str"
     printf '\f\r'
-    echo -s $prompt_status '> '
+    echo -s $prompt_status (set_color -o red) "$suffix " $normal
 end
