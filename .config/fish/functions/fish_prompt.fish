@@ -8,6 +8,10 @@ function fish_prompt --description 'Write out the prompt'
 
     set -l normal (set_color normal)
 
+    # virtual env should not modify my prompt, it is already take care of
+    set -g VIRTUAL_ENV_DISABLE_PROMPT true
+
+
     # Hack; fish_config only copies the fish_prompt function (see #736)
     if not set -q -g __fish_classic_git_functions_defined
         set -g __fish_classic_git_functions_defined
@@ -92,7 +96,7 @@ function fish_prompt --description 'Write out the prompt'
     	printf "%s[%s]%s " (set_color -b blue white) (basename (dirname "$VIRTUAL_ENV")) $normal
     end
     echo -n -s  (set_color $fish_color_user) "$USER" $normal
-    if test ! "$DISPLAY"
+    if test -z "$DISPLAY"
     	echo -n -s @ (set_color $fish_color_host) "$__fish_prompt_hostname" $normal
     end
     printf ' [%s%s] ' (parse_git_branch) $normal
