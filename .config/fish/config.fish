@@ -1,4 +1,4 @@
-set -g PATH ~/bin/ $PATH
+set -gx PATH ~/bin/ $PATH
 
 # TODO: nvm-fish
 
