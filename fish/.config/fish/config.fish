@@ -3,11 +3,14 @@ set -gx PATH ~/bin/ $PATH
 # TODO: nvm-fish
 
 keychain --quiet --agents "ssh,gpg" --nogui --dir ~/.ssh/.keychain ~/.ssh/id_rsa ~/.ssh/id_ed25519
-if test -f ~/.ssh/.keychain/"$HOSTNAME-sh"
-    source ~/.ssh/.keychain/"$HOSTNAME-sh"
+if test -f ~/.ssh/.keychain/(uname -n)-fish
+    echo "source ssh"
+    source ~/.ssh/.keychain/(uname -n)-fish
 end
-if test -f ~/.ssh/.keychain/"$HOSTNAME-sh-gpg"
-    source ~/.ssh/.keychain/"$HOSTNAME-sh-gpg"
+set gpgagent "~/.ssh/.keychain/"(uname -n)"-fish-gpg"
+if test -f ~/.ssh/.keychain/(uname -n)-fish-gpg
+    echo "source gpg"
+    source ~/.ssh/.keychain/(uname -n)-fish-gpg
 end
 if test -f ~/.autojump/share/autojump/autojump.fish
     source ~/.autojump/share/autojump/autojump.fish
