@@ -1,4 +1,5 @@
 set -gx PATH ~/bin/ $PATH
+set -gx LANG en_US.UTF-8
 
 # TODO: nvm-fish
 
