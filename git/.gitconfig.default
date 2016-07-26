@@ -18,13 +18,14 @@
     br = branch
     pr = pull --rebase
     ms = merge --squash
-    l = log --graph --pretty=hannes
-    ls = log --graph --pretty=hannes --stat
-    lp = log --graph --pretty=hannes --patch
+    l = log --graph --pretty=olaf
+    ls = log --graph --pretty=olaf --stat
+    lp = log --graph --pretty=olaf --patch
     d = diff
     ds = diff --stat
     a = add -p
 [pretty]
     hannes = %C(yellow)commit %h%C(magenta)%d%n%C(magenta)Author: %C(green)%an%Creset%C(magenta) <%ae>, %cr%n%B
+    olaf = %C(yellow)commit %h%C(magenta)%<(50)%d%cD%n%C(magenta)Author: %C(green)%an%Creset %C(magenta)<%ae>, %cr%n%B
 [push]
 	default = current
