@@ -3,18 +3,21 @@ set -gx LANG en_US.UTF-8
 
 # TODO: nvm-fish
 
-keychain --quiet --agents "ssh,gpg" --nogui --dir ~/.ssh/.keychain ~/.ssh/id_rsa ~/.ssh/id_ed25519
-if test -f ~/.ssh/.keychain/(uname -n)-fish
-    echo "source ssh"
-    source ~/.ssh/.keychain/(uname -n)-fish
-end
-set gpgagent "~/.ssh/.keychain/"(uname -n)"-fish-gpg"
-if test -f ~/.ssh/.keychain/(uname -n)-fish-gpg
-    echo "source gpg"
-    source ~/.ssh/.keychain/(uname -n)-fish-gpg
-end
-if test -f ~/.autojump/share/autojump/autojump.fish
-    source ~/.autojump/share/autojump/autojump.fish
+if status --is-interactive
+  # keychain --eval --quiet -Q id_rsa
+  keychain --eval --quiet --agents "ssh,gpg" --nogui --dir ~/.ssh/.keychain ~/.ssh/id_rsa ~/.ssh/id_ed25519
+  if test -f ~/.ssh/.keychain/(uname -n)-fish
+      echo "source ssh"
+      source ~/.ssh/.keychain/(uname -n)-fish
+  end
+  set gpgagent "~/.ssh/.keychain/"(uname -n)"-fish-gpg"
+  if test -f ~/.ssh/.keychain/(uname -n)-fish-gpg
+      echo "source gpg"
+      source ~/.ssh/.keychain/(uname -n)-fish-gpg
+  end
+  if test -f ~/.autojump/share/autojump/autojump.fish
+      source ~/.autojump/share/autojump/autojump.fish
+  end
 end
 alias p "python3"
 alias p2 "python2"
