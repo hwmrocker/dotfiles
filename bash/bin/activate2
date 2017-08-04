@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pushd . > /dev/null
+while [[ "$PWD" != "/" ]] ; do
+	if [ -f ./.env2/bin/activate ]
+	then
+		. ./.env2/bin/activate
+		break
+	else
+		cd ..
+	fi
+done
+popd > /dev/null

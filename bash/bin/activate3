@@ -7,13 +7,7 @@ while [[ "$PWD" != "/" ]] ; do
 		. ./.env3/bin/activate
 		break
 	else
-		if [ -f ./.env2/bin/activate ]
-		then
-			. ./.env2/bin/activate
-			break
-		else
-			cd ..
-		fi
+		cd ..
 	fi
 done
 popd > /dev/null
