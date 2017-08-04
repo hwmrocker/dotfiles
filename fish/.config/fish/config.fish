@@ -19,13 +19,13 @@ if status --is-interactive
       source ~/.autojump/share/autojump/autojump.fish
   end
 end
-alias p "python3"
+alias p "python"
 alias p2 "python2"
 alias p3 "python3"
 alias v "v3"
-alias v "v3"
-alias vs "v3s"
 alias a "activate"
+alias a2 "activate2"
+alias a3 "activate3"
 alias da "deactivate"
 alias md "mkdir -p"
 alias rd "rmdir"

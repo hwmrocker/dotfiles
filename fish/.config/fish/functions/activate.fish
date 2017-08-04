@@ -1,12 +1,18 @@
 function activate --description "looking for virtual envs to activate"
     pushd . > /dev/null
     while test "$PWD" != "/"
-        if test -f ./env/bin/activate
-            . env/bin/activate.fish
-            break
+        if test -f ./.env3/bin/activate
+            . .env3/bin/activate.fish
+            popd > /dev/null
+            return
         else
-            cd ..
+            if test -f ./.env2/bin/activate
+            . .env2/bin/activate.fish
+                popd > /dev/null
+                return
+            else
+                cd ..
+            end
         end
     end
-    popd > /dev/null
 end

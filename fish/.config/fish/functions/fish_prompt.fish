@@ -93,7 +93,7 @@ function fish_prompt --description 'Write out the prompt'
 
     printf '%s[%s]%s ' (set_color -o 444) (date "+%H:%M:%S") $normal
     if test "$VIRTUAL_ENV"
-    	printf "%s[%s]%s " (set_color -b blue white) (basename (dirname "$VIRTUAL_ENV")) $normal
+    	printf "%s[%s %s]%s " (set_color -b blue white) (basename (dirname "$VIRTUAL_ENV")) (python --version 2>&1) $normal
     end
     echo -n -s  (set_color $fish_color_user) "$USER" $normal
     if test -z "$DISPLAY"
