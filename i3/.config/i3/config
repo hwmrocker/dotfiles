@@ -30,7 +30,10 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # lock screen Ctrl + Alt + l
+#bindsym Control+Mod1+l exec i3lock -p win -c 000000 -u
 bindsym Control+Mod1+l exec i3lock -p win -c 000000 -u
+# bindsym $mod+l exec slock
+bindsym $mod+l exec i3lock -p win -c 000000 -u
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -46,7 +49,7 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+h focus left
 bindsym $mod+k focus down
 bindsym $mod+j focus up
-bindsym $mod+l focus right
+#bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
