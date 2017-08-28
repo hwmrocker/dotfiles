@@ -161,8 +161,17 @@ if [ -f ~/.ssh/.keychain/"$HOSTNAME-sh-gpg" ]; then
     source ~/.ssh/.keychain/"$HOSTNAME-sh-gpg"
 fi
 
-
-
-source ~/.local_bashrc
+if [ -f ~/.local_bashrc ]; then
+    source ~/.local_bashrc
+fi
 PATH=$PATH:/home/olaf/.linjark/bin
 export PATH
+
+# ssh
+function zz {
+  local host="$(cat ~/.ssh/config | grep "Host " | awk '{print $2}' | sort -u | fzf -q "$1" -1 --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229,info:150,prompt:110,spinner:150,pointer:167,marker:174)"
+  if [ -n "${host}" ]; then
+    echo "ssh '${host}'"
+    ssh "${host}"
+  fi
+}
