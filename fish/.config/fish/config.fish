@@ -1,4 +1,4 @@
-set -gx PATH ~/bin/ $PATH ~/go/bin
+set -gx PATH ~/bin/ ~/.local/bin $PATH ~/go/bin
 set -gx LANG en_US.UTF-8
 
 # TODO: nvm-fish
