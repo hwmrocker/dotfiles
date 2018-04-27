@@ -145,7 +145,7 @@ if 1 " boolean for plugin loading
   " linters: (from aur) nodejs-jshint, nodejs-jsonlint, csslint, checkbashisms
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_open = 0
   let g:syntastic_check_on_wq = 0
   highlight SyntasticErrorSign ctermfg=red ctermbg=237
   highlight SyntasticWarningSign ctermfg=yellow ctermbg=237
