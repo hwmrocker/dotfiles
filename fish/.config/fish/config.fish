@@ -17,8 +17,8 @@ if status --is-interactive
       echo "source gpg"
       source ~/.ssh/.keychain/(uname -n)-fish-gpg
   end
-  if test -f ~/.autojump/share/autojump/autojump.fish
-      source ~/.autojump/share/autojump/autojump.fish
+  if test -f /usr/share/fish/completions/autojump.fish
+      source /usr/share/fish/completions/autojump.fish
   end
 end
 
