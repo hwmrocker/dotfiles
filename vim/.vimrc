@@ -123,7 +123,10 @@ set cursorcolumn
 " ╹  ┗━╸┗━┛┗━┛╹╹ ╹   ┗━┛ ╹ ┗━┛╹  ╹  
 " i struggle with the decision to use plugins or a more vanilla vim. but right now i'm feeling sytanx completion, linting, and visual git diffs. don't judge me.
 " to install from the shell run:
-" git clone https://github.com/gmarik/Vundle.vim.git ~/dotfiles/vim/.vim/bundle/Vundle.vim && vim +BundleInstall +qall && PYTHON=/usr/bin/python2 ~/dotfiles/vim/.vim/bundle/YouCompleteMe/install.sh --clang-completer && pacman -S the_silver_searcher
+" git clone https://github.com/gmarik/Vundle.vim.git ~/myspace/dotfiles/vim/.vim/bundle/Vundle.vim \
+"  && vim +BundleInstall +qall \
+"  && python ~/myspace/dotfiles/vim/.vim/bundle/YouCompleteMe/install.py --clang-completer \
+"  && pacman -S the_silver_searcher
 set shell=/bin/bash
 if 1 " boolean for plugin loading
   set rtp+=~/.vim/bundle/Vundle.vim
