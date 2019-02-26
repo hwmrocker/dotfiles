@@ -10,10 +10,10 @@ or
     sudo pacman -S stow
 
 and then run:
-
+    mkdir -p $HOME/bin
     stow -t $HOME git
     stow -t $HOME fish
     stow -t $HOME bash
     stow -t $HOME vim
-    stow -t $HOME subl
-
+    stow -t $HOME i3
+    stow -t $HOME general-bin
