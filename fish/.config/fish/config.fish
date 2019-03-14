@@ -44,6 +44,6 @@ set -xg LESS_TERMCAP_us (printf "\e[01;32m")      # begin underline
 
 set -xg TERM xterm-256color
 
-set -x PATH "/home/olaf/.pyenv/bin" $PATH
-status --is-interactive; and . (pyenv init -|psub)
-status --is-interactive; and . (pyenv virtualenv-init -|psub)
+# set -x PATH "/home/olaf/.pyenv/bin" $PATH
+# status --is-interactive; and . (pyenv init -|psub)
+# status --is-interactive; and . (pyenv virtualenv-init -|psub)
