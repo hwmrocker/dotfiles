@@ -1,10 +1,12 @@
 #! /usr/bin/env python
-#encoding: utf-8
+# encoding: utf-8
 import re
 import sys
 import os
 import subprocess as sub
 import shlex
+from pathlib import Path
+
 
 RED = "\033[0;31m"
 PINK = "\033[1;31m"
@@ -21,20 +23,19 @@ COLOR_NONE = "\033[0m"
 branch_pattern = re.compile(r"On branch ([^ \n]*)")
 detached_pattern = re.compile(r"HEAD detached at")
 remote_compare = [
-    (re.compile(r"Your branch (.*) can be fast-forwarded.", re.MULTILINE), "%s»" % WHITE),
-    (re.compile(r"Your branch is ahead of", re.MULTILINE), "%s↑" % YELLOW),
-    (re.compile(r"Your branch is behind", re.MULTILINE), "%s↓" % YELLOW),
-    (re.compile(r"Your branch and (.*) have diverged", re.MULTILINE), "%s↕" % YELLOW),
+    (re.compile(r"Your branch (.*) can be fast-forwarded.", re.MULTILINE), f"{WHITE}»"),
+    (re.compile(r"Your branch is ahead of", re.MULTILINE), f"{YELLOW}↑"),
+    (re.compile(r"Your branch is behind", re.MULTILINE), f"{YELLOW}↓"),
+    (re.compile(r"Your branch and (.*) have diverged", re.MULTILINE), f"{YELLOW}↕"),
 ]
 
 dirty_checks = [
-    (re.compile(r"\s+modified:", re.MULTILINE), "%s⚡" % RED),
-    (re.compile(r"Changes to be committed:", re.MULTILINE), "%s¦" % YELLOW),
-    (re.compile(r"\s+new file:", re.MULTILINE), "%s+" % LT_GREEN),
-    (re.compile(r"\s+deleted:", re.MULTILINE), "%s-" % RED),
-    (re.compile(r"\s+renamed:", re.MULTILINE), "%s→" % YELLOW),
-    (re.compile(r"Untracked files:", re.MULTILINE), "%s¤" % YELLOW),
-
+    (re.compile(r"\s+modified:", re.MULTILINE), f"{RED}⚡"),
+    (re.compile(r"Changes to be committed:", re.MULTILINE), f"{YELLOW}¦"),
+    (re.compile(r"\s+new file:", re.MULTILINE), f"{LT_GREEN}+"),
+    (re.compile(r"\s+deleted:", re.MULTILINE), f"{RED}-"),
+    (re.compile(r"\s+renamed:", re.MULTILINE), f"{YELLOW}→"),
+    (re.compile(r"Untracked files:", re.MULTILINE), f"{YELLOW}¤"),
 ]
 
 
@@ -47,27 +48,30 @@ def get_stdout(cmd):
         _ = unicode()  # Just test if we are in python2
         return output
     except NameError:
-        return str(output, encoding="utf-8")
+        return str(output, encoding="utf-8").strip()
 
 
 def get_git_info(path=None):
     if path is not None:
         os.chdir(path)
 
-    git_status = get_stdout('git status')
+    git_status = get_stdout("git status")
 
     branch_match = branch_pattern.search(git_status)
     if not branch_match:
         # are we rebasing?
-        toplevel = get_stdout("git rev-parse --show-toplevel")
+        toplevel = Path(get_stdout("git rev-parse --show-toplevel"))
         if not toplevel:
             sys.exit(0)
-        if (os.path.exists("%s/.git/rebase-merge" % toplevel) or
-                os.path.exists("%s/.git/rebase-apply" % toplevel)):
-            sha = get_stdout("cat %s/.git/rebase-merge/stopped-sha" % toplevel)
-            print("%s\(rebase in progress)%s %s" % (PINK, COLOR_NONE, sha))
+        rbm = toplevel / ".git/rebase-merge"
+        if (toplevel / ".git/rebase-merge").exists() or (
+            toplevel / ".git/rebase-apply"
+        ).exists():
+            # sha = get_stdout("cat %s/.git/rebase-merge/stopped-sha" % toplevel)
+            sha = (toplevel / ".git/rebase-merge/stopped-sha").read_text()
+            print(f"{PINK}(rebase in progress){COLOR_NONE} {sha}")
         else:
-            print(RED + "<detached head>" + COLOR_NONE)
+            print(f"{RED}<detached head>{COLOR_NONE}")
         sys.exit()
     else:
         branch = branch_match.groups()[0]
@@ -84,6 +88,7 @@ def get_git_info(path=None):
                 git_prompt.append(symbol)
 
     print("".join(git_prompt))
+
 
 if __name__ == "__main__":
     get_git_info(path=None)
