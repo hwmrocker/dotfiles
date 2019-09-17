@@ -48,8 +48,8 @@ class InterceptResolver(BaseResolver):
         if any(qname_str.endswith(ending) for ending in [".trv.", ".trv.cloud.", ".consul."]):
             # use trv dns
             address = random.choice(["172.20.4.8", "172.20.4.7"])
-        elif "google" in qname_str:
-            address = random.choice(["8.8.8.8", "4.4.4.4"])
+        # elif "google" in qname_str:
+        #     address = random.choice(["8.8.8.8", "4.4.4.4"])
         else:
             address = random.choice(["1.0.0.1", "1.1.1.1"])
         try:
