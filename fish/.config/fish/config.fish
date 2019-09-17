@@ -1,4 +1,4 @@
-set -gx PATH ~/bin/ ~/.local/bin ~/.poetry/bin $PATH ~/go/bin
+set -gx PATH ~/bin/ ~/.local/bin ~/.yarn/bin ~/.poetry/bin $PATH ~/go/bin
 set -gx LANG en_US.UTF-8
 set -gx EDITOR vim
 set -gx VISUAL vim
@@ -6,19 +6,19 @@ set -gx VISUAL vim
 # TODO: nvm-fish
 
 if status --is-interactive
-  # keychain --eval --quiet -Q id_rsa
-  keychain --eval --quiet --agents "ssh,gpg" --nogui --dir ~/.ssh/.keychain ~/.ssh/id_rsa ~/.ssh/id_ed25519
+  keychain --quiet --agents "ssh,gpg" --nogui --dir ~/.ssh/.keychain ~/.ssh/id_rsa ~/.ssh/id_ed25519
   if test -f ~/.ssh/.keychain/(uname -n)-fish
-      echo "source ssh"
       source ~/.ssh/.keychain/(uname -n)-fish
   end
   set gpgagent "~/.ssh/.keychain/"(uname -n)"-fish-gpg"
   if test -f ~/.ssh/.keychain/(uname -n)-fish-gpg
-      echo "source gpg"
       source ~/.ssh/.keychain/(uname -n)-fish-gpg
   end
   if test -f /usr/share/fish/completions/autojump.fish
       source /usr/share/fish/completions/autojump.fish
+  end
+  if test -d ~/.cargo/bin
+     set -x PATH "/home/olaf/.cargo/bin" $PATH
   end
 end
 
