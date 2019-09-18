@@ -42,8 +42,6 @@ dirty_checks = [
 def get_stdout(cmd):
     p = sub.Popen(cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     output, error = p.communicate()
-    if error.startswith(b"fatal: Not a git repository"):
-        sys.exit(0)
     try:
         _ = unicode()  # Just test if we are in python2
         return output
@@ -56,6 +54,8 @@ def get_git_info(path=None):
         os.chdir(path)
 
     git_status = get_stdout("git status")
+    if git_status == "":
+        sys.exit(0)
 
     branch_match = branch_pattern.search(git_status)
     if not branch_match:
