@@ -24,16 +24,16 @@ branch_pattern = re.compile(r"On branch ([^ \n]*)")
 detached_pattern = re.compile(r"HEAD detached at")
 remote_compare = [
     (re.compile(r"Your branch (.*) can be fast-forwarded.", re.MULTILINE), f"{WHITE}»"),
-    (re.compile(r"Your branch is ahead of", re.MULTILINE), f"{YELLOW}↑"),
-    (re.compile(r"Your branch is behind", re.MULTILINE), f"{YELLOW}↓"),
-    (re.compile(r"Your branch and (.*) have diverged", re.MULTILINE), f"{YELLOW}↕"),
+    (re.compile(r"Your branch is ahead of", re.MULTILINE), f"{YELLOW}⬆️"),
+    (re.compile(r"Your branch is behind", re.MULTILINE), f"{YELLOW}⬇️"),
+    (re.compile(r"Your branch and (.*) have diverged", re.MULTILINE), f"{YELLOW}↕️"),
 ]
 
 dirty_checks = [
     (re.compile(r"\s+modified:", re.MULTILINE), f"{RED}⚡"),
-    (re.compile(r"Changes to be committed:", re.MULTILINE), f"{YELLOW}¦"),
+    (re.compile(r"Changes to be committed:", re.MULTILINE), f"{YELLOW}📦"),
     (re.compile(r"\s+new file:", re.MULTILINE), f"{LT_GREEN}+"),
-    (re.compile(r"\s+deleted:", re.MULTILINE), f"{RED}-"),
+    (re.compile(r"\s+deleted:", re.MULTILINE), f"{RED}🗑️"),
     (re.compile(r"\s+renamed:", re.MULTILINE), f"{YELLOW}→"),
     (re.compile(r"Untracked files:", re.MULTILINE), f"{YELLOW}¤"),
 ]
