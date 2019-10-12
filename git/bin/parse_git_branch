@@ -34,7 +34,7 @@ dirty_checks = [
     (re.compile(r"Changes to be committed:", re.MULTILINE), f"{YELLOW}📦"),
     (re.compile(r"\s+new file:", re.MULTILINE), f"{LT_GREEN}+"),
     (re.compile(r"\s+deleted:", re.MULTILINE), f"{RED}🗑️"),
-    (re.compile(r"\s+renamed:", re.MULTILINE), f"{YELLOW}→"),
+    (re.compile(r"\s+renamed:", re.MULTILINE), f"{YELLOW}➡️"),
     (re.compile(r"Untracked files:", re.MULTILINE), f"{YELLOW}¤"),
 ]
 
