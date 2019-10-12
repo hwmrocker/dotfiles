@@ -31,9 +31,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # lock screen Ctrl + Alt + l
 #bindsym Control+Mod1+l exec i3lock -p win -c 000000 -u
-bindsym Control+Mod1+l exec i3lock -p win -c 000000 -u
+bindsym Control+Mod1+l exec pyxtrlock
 # bindsym $mod+l exec slock
-bindsym $mod+l exec i3lock -p win -c fefefe -u
+bindsym $mod+l exec i3lock -c fefefe
 
 # kill focused window
 bindsym $mod+Shift+q kill
