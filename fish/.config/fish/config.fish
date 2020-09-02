@@ -43,7 +43,11 @@ set -xg LESS_TERMCAP_ue (printf "\e[0m")          # end underline
 set -xg LESS_TERMCAP_us (printf "\e[01;32m")      # begin underline
 
 set -xg TERM xterm-256color
+set -xg PIPENV_IGNORE_VIRTUALENVS 1
 
 # set -x PATH "/home/olaf/.pyenv/bin" $PATH
 # status --is-interactive; and . (pyenv init -|psub)
 # status --is-interactive; and . (pyenv virtualenv-init -|psub)
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/olaf/opt/google-cloud-sdk/path.fish.inc' ]; . '/home/olaf/opt/google-cloud-sdk/path.fish.inc'; end

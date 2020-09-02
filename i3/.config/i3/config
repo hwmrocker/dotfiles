@@ -7,6 +7,7 @@
 
 # set up altgr intl keyboard layout
 exec_always setxkbmap us altgr-intl
+exec --no-startup-id i3-battery-popup
 
 # i3 config file (v4)
 #
