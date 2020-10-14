@@ -51,3 +51,5 @@ set -xg PIPENV_IGNORE_VIRTUALENVS 1
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/olaf/opt/google-cloud-sdk/path.fish.inc' ]; . '/home/olaf/opt/google-cloud-sdk/path.fish.inc'; end
+
+if [ -d '/home/olaf/.cargo/bin' ]; set -x PATH "/home/olaf/.cargo/bin" $PATH; end

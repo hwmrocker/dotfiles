@@ -164,7 +164,7 @@ fi
 if [ -f ~/.local_bashrc ]; then
     source ~/.local_bashrc
 fi
-PATH=$PATH:/home/olaf/.linjark/bin
+PATH=$PATH:/home/olaf/.linjark/bin:/home/olaf/.cargo/bin
 export PATH
 
 # ssh
