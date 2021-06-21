@@ -34,3 +34,5 @@
     olaf = %C(yellow)commit %h%C(magenta)%<(50)%d%cD%n%C(magenta)Author: %C(green)%an%Creset %C(magenta)<%ae>, %cr%n%B
 [push]
 	default = current
+[pull]
+	rebase = true
