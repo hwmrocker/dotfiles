@@ -19,20 +19,20 @@ import random
 class InterceptResolver(BaseResolver):
 
     """
-        Intercepting resolver
+    Intercepting resolver
 
-        Proxy requests to upstream server optionally intercepting requests
-        matching local records
+    Proxy requests to upstream server optionally intercepting requests
+    matching local records
     """
 
     def __init__(self, timeout=0):
         """
-            address/port    - upstream server
-            ttl             - default ttl for intercept records
-            intercept       - list of wildcard RRs to respond to (zone format)
-            skip            - list of wildcard labels to skip
-            nxdomain        - list of wildcard labels to retudn NXDOMAIN
-            timeout         - timeout for upstream server
+        address/port    - upstream server
+        ttl             - default ttl for intercept records
+        intercept       - list of wildcard RRs to respond to (zone format)
+        skip            - list of wildcard labels to skip
+        nxdomain        - list of wildcard labels to retudn NXDOMAIN
+        timeout         - timeout for upstream server
         """
         self.timeout = timeout
         self.zone = []
@@ -49,10 +49,24 @@ class InterceptResolver(BaseResolver):
             for ending in [".trv.", ".trv.cloud.", ".consul."]
         ):
             # use trv dns
-            address = random.choice(["172.20.4.8", "172.20.4.7"])
-        elif "kafka" in qname_str and qname_str.endswith("trivago.com"):
+            # address = random.choice(["172.20.4.8", "172.20.4.7"])
+            address = random.choice(["172.30.22.7", "172.30.22.8"])
+        elif "artifactory.tcs.trv.cloud." == qname_str:
+            address = random.choice(["172.20.128.142"])
+        elif any(
+            qname_str.endswith(ending)
+            for ending in [
+                ".tcs.trv.cloud.",
+            ]
+        ):
+            address = random.choice(["172.30.22.7", "172.30.22.8"])
+        elif "kafka" in qname_str and qname_str.endswith("trivago.com."):
             address = random.choice(["172.20.128.142"])
         # elif "google" in qname_str:
+        elif any(qname_str.endswith(ending) for ending in ["trivago.com."]):
+            # use trv dns
+            # address = random.choice(["172.20.4.8", "172.20.4.7"])
+            address = random.choice(["172.30.22.7", "172.30.22.8"])
         #     address = random.choice(["8.8.8.8", "4.4.4.4"])
         else:
             address = random.choice(["1.0.0.1", "1.1.1.1"])
@@ -101,12 +115,12 @@ if __name__ == "__main__":
         "log_error",  # Decoding error
     }
 
-    udp_server = DNSServer(resolver, port=53, address="127.0.0.1", logger=logger)
+    udp_server = DNSServer(resolver, port=53, address="0.0.0.0", logger=logger)
     udp_server.start_thread()
 
     if args.tcp:
         tcp_server = DNSServer(
-            resolver, port=53, address="127.0.0.1", tcp=True, logger=logger
+            resolver, port=53, address="0.0.0.0", tcp=True, logger=logger
         )
         tcp_server.start_thread()
 
@@ -117,7 +131,8 @@ if __name__ == "__main__":
 
     # set this nameserver in resolve.conf
     with open("/etc/resolv.conf", "w") as fh:
-        fh.write("nameserver 127.0.0.1\nameserver ::1\n")
+        # fh.write("nameserver 192.168.178.74\nnameserver fe80::a735:6ff8:78c4:aafe\n")
+        fh.write("nameserver 127.0.0.1\nnameserver ::1\n")
     try:
         while udp_server.isAlive():
             time.sleep(1)
