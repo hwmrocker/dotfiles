@@ -8,7 +8,8 @@
 # set up altgr intl keyboard layout
 exec_always setxkbmap us altgr-intl
 exec --no-startup-id i3-battery-popup
-
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet --indicator
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
