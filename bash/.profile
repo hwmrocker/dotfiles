@@ -21,3 +21,5 @@ export NVM_DIR="/home/olaf/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+export PATH="/home/olaf/.edgedb/bin:$PATH"

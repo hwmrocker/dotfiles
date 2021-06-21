@@ -53,3 +53,4 @@ set -xg PIPENV_IGNORE_VIRTUALENVS 1
 if [ -f '/home/olaf/opt/google-cloud-sdk/path.fish.inc' ]; . '/home/olaf/opt/google-cloud-sdk/path.fish.inc'; end
 
 if [ -d '/home/olaf/.cargo/bin' ]; set -x PATH "/home/olaf/.cargo/bin" $PATH; end
+if [ -d '/home/olaf/.edgedb/bin' ]; set -x PATH "/home/olaf/.edgedb/bin" $PATH; end
