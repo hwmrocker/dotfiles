@@ -14,8 +14,8 @@ if status --is-interactive
   if test -f ~/.ssh/.keychain/(uname -n)-fish-gpg
       source ~/.ssh/.keychain/(uname -n)-fish-gpg
   end
-  if test -f /usr/share/fish/completions/autojump.fish
-      source /usr/share/fish/completions/autojump.fish
+  if test -f /usr/share/fish/functions/autojump.fish
+      source /usr/share/fish/functions/autojump.fish
   end
   if test -d ~/.cargo/bin
      set -x PATH "/home/olaf/.cargo/bin" $PATH
@@ -53,4 +53,3 @@ set -xg PIPENV_IGNORE_VIRTUALENVS 1
 if [ -f '/home/olaf/opt/google-cloud-sdk/path.fish.inc' ]; . '/home/olaf/opt/google-cloud-sdk/path.fish.inc'; end
 
 if [ -d '/home/olaf/.cargo/bin' ]; set -x PATH "/home/olaf/.cargo/bin" $PATH; end
-if [ -d '/home/olaf/.edgedb/bin' ]; set -x PATH "/home/olaf/.edgedb/bin" $PATH; end

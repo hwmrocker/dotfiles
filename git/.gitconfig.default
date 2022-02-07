@@ -7,7 +7,7 @@
     editor = vim
     excludesfile = /home/olaf/.gitignore_global
 [merge]
-    tool = kdiff3
+    tool = meld
     summary = true
 [rerere]
     enabled = 1
@@ -33,6 +33,16 @@
     hannes = %C(yellow)commit %h%C(magenta)%d%n%C(magenta)Author: %C(green)%an%Creset%C(magenta) <%ae>, %cr%n%B
     olaf = %C(yellow)commit %h%C(magenta)%<(50)%d%cD%n%C(magenta)Author: %C(green)%an%Creset %C(magenta)<%ae>, %cr%n%B
 [push]
-	default = current
+    default = current
 [pull]
-	rebase = true
+    rebase = true
+[init]
+    defaultBranch = main
+
+[includeIf "gitdir:~/myspace/"]
+    path = ~/myspace/.gitconfig
+
+[includeIf "gitdir:~/workspace/"]
+    path = ~/workspace/.gitconfig
+
+
