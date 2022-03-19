@@ -53,3 +53,8 @@ set -xg PIPENV_IGNORE_VIRTUALENVS 1
 if [ -f '/home/olaf/opt/google-cloud-sdk/path.fish.inc' ]; . '/home/olaf/opt/google-cloud-sdk/path.fish.inc'; end
 
 if [ -d '/home/olaf/.cargo/bin' ]; set -x PATH "/home/olaf/.cargo/bin" $PATH; end
+
+direnv hook fish | source
+set -g direnv_fish_mode eval_on_arrow
+
+starship init fish | source

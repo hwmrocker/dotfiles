@@ -98,23 +98,26 @@ fi
 #  Better prompt
 #
 
-git_current_info=""
-function set_prompt() {
-    git_current_info=$(parse_git_branch)
-    [ -n "$git_current_info" ] && git_current_info="$git_current_info "
-}
-PROMPT_COMMAND=set_prompt
+# git_current_info=""
+# function set_prompt() {
+#     git_current_info=$(parse_git_branch)
+#     [ -n "$git_current_info" ] && git_current_info="$git_current_info "
+# }
+# PROMPT_COMMAND=set_prompt
 
-_prompt_username () { if [ $UID -eq 0 ] ; then echo '\[\e[01;31m\]\u' ; else echo '\[\e[01;32m\]\u' ; fi }
-_prompt_hostname () { if [ "`who am i | sed 's/.*(\(.*\))/\1/g'`" != ':0' ] ; then echo '\[\e[01;30m\]@\H' ; fi }
+# _prompt_username () { if [ $UID -eq 0 ] ; then echo '\[\e[01;31m\]\u' ; else echo '\[\e[01;32m\]\u' ; fi }
+# _prompt_hostname () { if [ "`who am i | sed 's/.*(\(.*\))/\1/g'`" != ':0' ] ; then echo '\[\e[01;30m\]@\H' ; fi }
 
-_prompt_virtualenv () {
-    [ -n "$VIRTUAL_ENV" ] && printf '\e[01;31m'$(basename $VIRTUAL_ENV)'\e[00m '
-}
+# _prompt_virtualenv () {
+#     [ -n "$VIRTUAL_ENV" ] && printf '\e[01;31m'$(basename $VIRTUAL_ENV)'\e[00m '
+# }
 
-PS1="\e]0;\w\007\[\e[01;30m\]\A $(_prompt_username)$(_prompt_hostname)  \${git_current_info} \$(_prompt_virtualenv)\[\e[01;34m\]\w\n\[\e[01;31m\]\$\[\e[00m\] "
-PS2='\[\e[01;31m\]>\[\e[00m\] '
-unset _prompt_hostname _prompt_username
+# PS1="\e]0;\w\007\[\e[01;30m\]\A $(_prompt_username)$(_prompt_hostname)  \${git_current_info} \$(_prompt_virtualenv)\[\e[01;34m\]\w\n\[\e[01;31m\]\$\[\e[00m\] "
+# PS2='\[\e[01;31m\]>\[\e[00m\] '
+# unset _prompt_hostname _prompt_username
+
+eval "$(starship init bash)"
+
 
 #
 # source

@@ -1,0 +1,74 @@
+format = """
+$time\
+$shell\
+${username}@${hostname}\
+$localip\
+$python\
+${custom.virtualenv_detector}\
+$rust\
+$terraform\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$directory\
+$sudo\
+$line_break\
+
+$status\
+$character"""
+
+right_format = """
+$cmd_duration\
+$memory_usage\
+$battery\
+$jobs"""
+
+[aws]
+disabled = true
+
+[directory]
+truncate_to_repo = false
+
+[gcloud]
+disabled = true
+
+[hostname]
+ssh_only = false
+
+[memory_usage]
+disabled = false
+
+[python]
+detect_extensions = []
+format = "[${symbol}${pyenv_prefix}(${version} )]($style) [(\\[$virtualenv\\])]($style inverted) "
+disabled = true
+
+[shell]
+disabled = false
+fish_indicator = "🐟"
+
+[status]
+disabled = false
+format = "[$symbol $status]($style)"
+
+[sudo]
+disabled = false
+
+[time]
+disabled = false
+format = "[\\[$time\\]]($style) "
+style = "bright-black"
+
+[username]
+show_always = true
+format = "[$user]($style)"
+style_user = "bright-green"
+style_root = "bright-red bold"
+
+[custom.virtualenv_detector]
+command = "python --version"
+format = "[\\[$output\\]]($style) "
+style = "yellow inverted"
+when = "test $VIRTUAL_ENV"
