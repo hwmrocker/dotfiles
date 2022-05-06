@@ -1,3 +1,4 @@
 vim/.vim/bundle/
+vim/.vim/undo/
 fish/.config/fish/fishd.*
 fish/.config/fish/fish_variables

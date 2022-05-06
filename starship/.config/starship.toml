@@ -17,13 +17,14 @@ $sudo\
 $line_break\
 
 $status\
-$character"""
-
-right_format = """
 $cmd_duration\
 $memory_usage\
 $battery\
-$jobs"""
+$jobs\
+$character"""
+
+right_format = """
+"""
 
 [aws]
 disabled = true
