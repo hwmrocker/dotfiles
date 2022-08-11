@@ -1,0 +1,49 @@
+[user]
+    name = Olaf Gladis
+    email = olaf@gladis.org
+[color]
+    ui = true
+[core]
+    editor = code --wait
+    excludesfile = /home/olaf/.gitignore_global
+[merge]
+    tool = meld
+    summary = true
+[rerere]
+    enabled = 1
+[alias]
+    st = status -s -b --ignore-submodules=dirty
+    ci = commit -v
+    co = checkout
+    br = branch
+    pr = pull --rebase
+    ms = merge --squash
+    l = log --graph --pretty=olaf
+    ls = log --graph --pretty=olaf --stat
+    lp = log --graph --pretty=olaf --patch
+    d = diff
+    ds = diff --stat
+    a = add -p
+    tp = !git tag $1; git push origin $1
+    prp = "!git pull --rebase && git push"
+    sp = "!git stash && git pull --rebase && git push && git stash pop"
+    p = "!git stash && git pull --rebase && git stash pop"
+    c = "!git branch --merged | egrep -v '(^\\*|master|dev)' | xargs -r git branch -d"
+[pretty]
+    hannes = %C(yellow)commit %h%C(magenta)%d%n%C(magenta)Author: %C(green)%an%Creset%C(magenta) <%ae>, %cr%n%B
+    olaf = %C(yellow)commit %h%C(magenta)%<(50)%d%cD%n%C(magenta)Author: %C(green)%an%Creset %C(magenta)<%ae>, %cr%n%B
+[push]
+    default = current
+	autoSetupRemote = true
+[pull]
+    rebase = true
+[init]
+    defaultBranch = main
+
+[includeIf "gitdir:~/myspace/"]
+    path = ~/myspace/.gitconfig
+
+[includeIf "gitdir:~/workspace/"]
+    path = ~/workspace/.gitconfig
+
+
