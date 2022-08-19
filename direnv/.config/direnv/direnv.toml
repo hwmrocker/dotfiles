@@ -1,0 +1,6 @@
+[global]
+load_dotenv = true
+warn_timeout = "10s"
+
+[whitelist]
+prefix = ["/home/olaf/workspace/", "/home/olaf/myspace/"]
