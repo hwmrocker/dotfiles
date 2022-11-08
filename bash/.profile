@@ -23,3 +23,7 @@ export NVM_DIR="/home/olaf/.nvm"
 export PATH="$HOME/.poetry/bin:$PATH"
 
 export PATH="/home/olaf/.edgedb/bin:$PATH"
+
+if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
