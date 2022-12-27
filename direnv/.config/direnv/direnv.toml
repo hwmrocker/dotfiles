@@ -3,4 +3,9 @@ load_dotenv = true
 warn_timeout = "10s"
 
 [whitelist]
-prefix = ["/home/olaf/workspace/", "/home/olaf/myspace/"]
+prefix = [
+    "/home/olaf/workspace/",
+    "/home/olaf/myspace/",
+    "/home/hwm/workspace/",
+    "/home/hwm/myspace/",
+]
