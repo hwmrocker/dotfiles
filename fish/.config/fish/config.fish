@@ -54,6 +54,10 @@ if [ -f '/home/olaf/opt/google-cloud-sdk/path.fish.inc' ]
     . '/home/olaf/opt/google-cloud-sdk/path.fish.inc'
 end
 
+if [ -f '/opt/asdf-vm/asdf.fish' ]
+    source /opt/asdf-vm/asdf.fish
+end
+
 if [ -d '/home/olaf/.cargo/bin' ]
     set -x PATH "/home/olaf/.cargo/bin" $PATH
 end

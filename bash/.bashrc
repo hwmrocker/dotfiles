@@ -170,6 +170,10 @@ fi
 PATH=$PATH:/home/olaf/.linjark/bin:/home/olaf/.cargo/bin
 export PATH
 
+if [ -f /opt/asdf-vm/asdf.sh ]; then
+    . /opt/asdf-vm/asdf.sh
+fi
+
 # ssh
 function zz {
   local host="$(cat ~/.ssh/config | grep "Host " | awk '{print $2}' | sort -u | fzf -q "$1" -1 --color fg:-1,bg:-1,hl:230,fg+:3,bg+:233,hl+:229,info:150,prompt:110,spinner:150,pointer:167,marker:174)"
