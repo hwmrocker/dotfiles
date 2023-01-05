@@ -1,5 +1,6 @@
 mkdir -p $HOME/bin
 stow -t $HOME locale
+stow -t $HOME arch
 stow -t $HOME git
 stow -t $HOME fish
 stow -t $HOME bash
