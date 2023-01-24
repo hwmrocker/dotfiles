@@ -85,10 +85,10 @@ bindsym $mod+Shift+j move up
 bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym Mod1+Shift+Left move left
+bindsym Mod1+Shift+Down move down
+bindsym Mod1+Shift+Up move up
+bindsym Mod1+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+g split h
@@ -149,7 +149,9 @@ bindsym $mod+Control+Shift+Left move workspace to output left
 bindsym $mod+Control+Shift+Right move workspace to output right
 
 bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+Right move workspace to output right
 bindsym $mod+Shift+less move workspace to output left
+bindsym $mod+Shift+Left move workspace to output left
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

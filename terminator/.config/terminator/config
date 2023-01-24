@@ -2,7 +2,6 @@
 [keybindings]
 [profiles]
   [[default]]
-    cursor_color = "#aaaaaa"
     font = Anonymice Nerd Font Mono 11
     scrollback_infinite = True
     use_system_font = False
