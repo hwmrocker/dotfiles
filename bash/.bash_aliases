@@ -10,28 +10,32 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+
+if [ $(which lsd 2> /dev/null) ]; then
+    alias ls='lsd'
+    alias ll='lsd -l'
+    alias la='lsd -a'
+
+else
+    # some more ls aliases
+    alias ll='ls -alF'
+    alias la='ls -A'
+    alias l='ls -CF'
+fi
+
+if [ $(which bat 2> /dev/null) ]; then
+    alias cat='bat'
+fi
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias pypo="ve pypo"
 alias p="python"
 alias t="python setup.py test"
 alias da="deactivate"
-alias a=". activate"
-alias a2=". activate2"
-alias a3=". activate3"
-alias v2="virtualenv env -p python2; . activate"
-alias v2s="virtualenv --system-site-packages -p python2 env; . activate"
-alias v3="virtualenv env -p python3; . activate"
-alias v3s="virtualenv --system-site-packages env -p python3; . activate"
-alias v="virtualenv env -p python3; . activate"
-alias vs="virtualenv --system-site-packages env -p python3; . activate"
+alias a="activate"
+alias v="python -m venv .venv; activate"
 alias md='mkdir -p';
 alias rd='rmdir';
 mcd () { mkdir "$@" && cd "$@"; }

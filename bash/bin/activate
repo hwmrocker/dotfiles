@@ -2,18 +2,35 @@
 
 pushd . > /dev/null
 while [[ "$PWD" != "/" ]] ; do
-	if [ -f ./.env3/bin/activate ]
+	activator=""
+	if [ -f ./pyproject.toml ]
 	then
-		. ./.env3/bin/activate
-		break
-	else
-		if [ -f ./.env2/bin/activate ]
+		if rg [tool.poetry] pyproject.toml > /dev/null
 		then
-			. ./.env2/bin/activate
+			echo "Activating poetry virtual env..."
+			poetry_path=$(poetry env info -p)
+			activator=$poetry_path/bin/activate
 			break
-		else
-			cd ..
 		fi
 	fi
+	if [ -f ./Pipfile ]
+	then
+		echo "Activating pipenv virtual env..."
+		pipenv_path=$(pipenv --venv)
+		activator=$pipenv_path/bin/activate
+		break
+	fi
+	if [ -f ./.venv/bin/activate ]
+	then
+		echo "Activating .venv ..."
+		activator=./.env/bin/activate
+		break
+	fi
+	cd ..
 done
+if [ -n "$activator" ]
+then
+	echo "Activating $activator"
+	source $activator
+fi
 popd > /dev/null

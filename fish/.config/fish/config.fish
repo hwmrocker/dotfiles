@@ -22,17 +22,30 @@ if status --is-interactive
     end
 end
 
-alias p python
-alias p2 python2
-alias p3 python3
-alias v v3
 alias a activate
-alias a2 activate2
-alias a3 activate3
 alias da deactivate
 alias md "mkdir -p"
-alias rd rmdir
 alias vi vim
+
+if which lsd >/dev/null
+    alias ls lsd
+    alias ll "lsd -l"
+    alias la "lsd -a"
+    alias lla "lsd -la"
+else if which exa >/dev/null
+    alias ls exa
+    alias ll "exa -l"
+    alias la "exa -a"
+    alias lla "exa -la"
+else
+    alias ll "ls -l"
+    alias la "ls -a"
+    alias lla "ls -la"
+end
+
+if which bat >/dev/null
+    alias cat bat
+end
 
 set -xg LESS_TERMCAP_mb (printf "\e[01;31m") # begin blinking
 set -xg LESS_TERMCAP_md (printf "\e[01;31m") # begin bold
@@ -62,10 +75,14 @@ if [ -d '/home/olaf/.cargo/bin' ]
     set -x PATH "/home/olaf/.cargo/bin" $PATH
 end
 
-direnv hook fish | source
-set -g direnv_fish_mode eval_on_arrow
+if which direnv >/dev/null
+    direnv hook fish | source
+    set -g direnv_fish_mode eval_on_arrow
+end
 
-starship init fish | source
+if which starship >/dev/null
+    starship init fish | source
+end
 
 if [ "$XDG_SESSION_TYPE" = wayland ]
     set -xg MOZ_ENABLE_WAYLAND 1
