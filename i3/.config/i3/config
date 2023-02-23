@@ -86,8 +86,8 @@ bindsym Mod1+Shift+l move right
 
 # alternatively, you can use the cursor keys: (Alt + Shift + <direction>)
 bindsym Mod1+Shift+Left move left
-bindsym Mod1+Shift+Down move down
-bindsym Mod1+Shift+Up move up
+# bindsym Mod1+Shift+Down move down
+# bindsym Mod1+Shift+Up move up # this interferes with VS Code
 bindsym Mod1+Shift+Right move right
 
 # split in horizontal orientation
