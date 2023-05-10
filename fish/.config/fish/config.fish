@@ -82,8 +82,7 @@ if which starship >/dev/null
 end
 
 if which zoxide >/dev/null
-    zoxide init fish | source
-    alias j z
+    zoxide init fish --cmd j | source
 end
 
 if [ "$XDG_SESSION_TYPE" = wayland ]
