@@ -1,7 +1,6 @@
 yay -S slurm tcptrack
 yay -S arandr
 yay -S meld
-yay -S autojump
 yay -S cmake
 yay -S pulseaudio-alsa
 yay -S alsa-tools pavucontrol
@@ -23,4 +22,4 @@ yay -S bind # dig formerly known as bind-tools
 yay -S feh
 yay -S noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra # full unicode fonts
 
-yay -S slurm tcptrack arandr meld autojump cmake pulseaudio-alsa alsa-tools pavucontrol dmenu code firefox pulseaudio keychain lightdm lightdm-slick-greeter terminator i3-wm i3blocks slock i3lock i3status stow fish tmux inetutils bind feh noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra
+yay -S slurm tcptrack arandr meld zoxide cmake pulseaudio-alsa alsa-tools pavucontrol dmenu code firefox pulseaudio keychain lightdm lightdm-slick-greeter terminator i3-wm i3blocks slock i3lock i3status stow fish tmux inetutils bind feh noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra

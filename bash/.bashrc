@@ -117,22 +117,12 @@ fi
 # unset _prompt_hostname _prompt_username
 
 eval "$(starship init bash)"
-
+eval "$(zoxide init bash)"
 
 #
 # source
 #
 
-if [ -f ~/.pokermania ]; then
-    source ~/.pokermania
-fi
-
-for file in /etc/profile.d/autojump.sh /usr/share/autojump/autojump.sh; do
-    if [ -f "$file" ]; then
-       source "$file"
-	break
-    fi
-done
 
 if [ -f ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh

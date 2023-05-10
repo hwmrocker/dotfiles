@@ -14,9 +14,6 @@ if status --is-interactive
     if test -f ~/.ssh/.keychain/(uname -n)-fish-gpg
         source ~/.ssh/.keychain/(uname -n)-fish-gpg
     end
-    if test -f /usr/share/fish/functions/autojump.fish
-        source /usr/share/fish/functions/autojump.fish
-    end
     if test -d ~/.cargo/bin
         set -x PATH "/home/olaf/.cargo/bin" $PATH
     end
@@ -82,6 +79,11 @@ end
 
 if which starship >/dev/null
     starship init fish | source
+end
+
+if which zoxide >/dev/null
+    zoxide init fish | source
+    alias j z
 end
 
 if [ "$XDG_SESSION_TYPE" = wayland ]
