@@ -15,6 +15,7 @@
     st = status -s -b --ignore-submodules=dirty
     ci = commit -v
     co = checkout
+    s = switch
     br = branch
     pr = pull --rebase
     ms = merge --squash
@@ -34,7 +35,7 @@
     olaf = %C(yellow)commit %h%C(magenta)%<(50)%d%cD%n%C(magenta)Author: %C(green)%an%Creset %C(magenta)<%ae>, %cr%n%B
 [push]
     default = current
-	autoSetupRemote = true
+    autoSetupRemote = true
 [pull]
     rebase = true
 [init]
