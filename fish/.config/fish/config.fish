@@ -72,8 +72,8 @@ if [ -d ~/.cargo/bin ]
     set -x PATH ~/.cargo/bin $PATH
 end
 
+set -x RYE_HOME ~/.local/rye
 if [ -d ~/.local/rye ]
-    set -x RYE_HOME ~/.local/rye
     set -x PATH ~/.local/rye/shims $PATH
 end
 

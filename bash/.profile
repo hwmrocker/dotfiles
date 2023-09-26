@@ -27,3 +27,5 @@ export PATH="/home/olaf/.edgedb/bin:$PATH"
 if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
     export MOZ_ENABLE_WAYLAND=1
 fi
+
+source "$HOME/.rye/env"
