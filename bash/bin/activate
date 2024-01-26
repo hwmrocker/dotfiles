@@ -5,7 +5,7 @@ while [[ "$PWD" != "/" ]] ; do
 	activator=""
 	if [ -f ./pyproject.toml ]
 	then
-		if rg [tool.poetry] pyproject.toml > /dev/null
+		if rg \\[tool.poetry\\] pyproject.toml > /dev/null
 		then
 			echo "Activating poetry virtual env..."
 			poetry_path=$(poetry env info -p)

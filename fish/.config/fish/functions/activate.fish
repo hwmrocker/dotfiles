@@ -11,7 +11,7 @@ function activate --description "looking for virtual envs to activate"
     pushd . >/dev/null
     while test "$PWD" != /
         if test -f ./pyproject.toml
-            if rg [tool.poetry] pyproject.toml >/dev/null
+            if rg \\[tool.poetry\\] pyproject.toml >/dev/null
                 echo "Activating poetry virtual env..."
                 set poetry_path (poetry env info -p)
                 set activator $poetry_path/bin/activate.fish

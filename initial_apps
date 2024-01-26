@@ -20,7 +20,7 @@ yay -S tmux
 yay -S inetutils # telnet
 yay -S bind # dig formerly known as bind-tools
 yay -S feh
-yay -S noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra # full unicode fonts
+yay -S noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra ttf-anonymouspro-nerd # full unicode fonts
 yay -S starship zoxide lsd bat ripgrep
 
 # yay -S slurm tcptrack arandr meld zoxide cmake pulseaudio-alsa alsa-tools pavucontrol dmenu code firefox pulseaudio keychain lightdm lightdm-slick-greeter terminator i3-wm i3blocks slock i3lock i3status stow fish tmux inetutils bind feh noto-fonts noto-fonts-emoji noto-fonts-cjk noto-fonts-extra
