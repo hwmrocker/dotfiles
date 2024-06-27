@@ -77,6 +77,10 @@ if [ -d ~/.local/rye ]
     set -x PATH ~/.local/rye/shims $PATH
 end
 
+if [ -d /opt/nvim-linux64 ]
+    set -x PATH $PATH /opt/nvim-linux64/bin
+end
+
 if which direnv >/dev/null
     direnv hook fish | source
     set -g direnv_fish_mode eval_on_arrow
